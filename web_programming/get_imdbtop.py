@@ -8,6 +8,7 @@ def imdb_top(imdb_top_n):
         f"feature&sort=num_votes,desc&count={imdb_top_n}"
     )
     source = BeautifulSoup(requests.get(base_url).content, "html.parser")
+    print (source)
     for m in source.findAll("div", class_="lister-item mode-advanced"):
         print("\n" + m.h3.a.text)  # movie's name
         print(m.find("span", attrs={"class": "genre"}).text)  # genre
